@@ -6,11 +6,10 @@ import datetime
 
 st.set_page_config(
     page_title="YouTube Transkript",
-    page_icon="📝",
     layout="centered"
 )
 
-st.title("📝 YouTube Transkript")
+st.title("YouTube Transkript")
 st.write("Klistra in en YouTube-länk för att hämta transkriptet.")
 
 url = st.text_input("YouTube-URL", placeholder="https://www.youtube.com/watch?v=...")
@@ -42,18 +41,17 @@ if url:
                 filename = f"transcript_{vid}_{now}.txt"
                 
                 st.success(f"Transkript hämtat! ({len(txt)} tecken)")
-                
+
                 # Nedladdningsknapp
                 st.download_button(
-                    label="⬇️ Ladda ner som textfil",
+                    label="Ladda ner som textfil",
                     data=txt,
                     file_name=filename,
                     mime="text/plain"
                 )
-                
+
                 # Visa transkriptet
-                with st.expander("Visa transkript", expanded=True):
-                    st.text_area("", txt, height=400, label_visibility="collapsed")
+                st.text_area("Transkript", txt, height=400)
                     
             except TranscriptsDisabled:
                 st.error("Transkript är inaktiverat för denna video.")
@@ -61,6 +59,3 @@ if url:
                 st.error("Inget transkript hittades för denna video.")
             except Exception as e:
                 st.error(f"Ett fel uppstod: {str(e)}")
-
-st.divider()
-st.caption("Transkript hämtas via YouTubes automatiska eller manuella undertexter.")
