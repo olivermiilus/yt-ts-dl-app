@@ -26,14 +26,16 @@ if url:
         
         with st.spinner("Hämtar transkript..."):
             try:
+                ytt_api = YouTubeTranscriptApi()
+
                 # Försök hämta svensk transkript först, annars engelska, annars första tillgängliga
                 try:
-                    t = YouTubeTranscriptApi.get_transcript(vid, languages=["sv", "en"])
+                    t = ytt_api.fetch(vid, languages=["sv", "en"])
                 except NoTranscriptFound:
-                    t = YouTubeTranscriptApi.get_transcript(vid)
+                    t = ytt_api.fetch(vid)
 
                 # Skapa transkripttext
-                txt = " ".join([x["text"] for x in t])
+                txt = " ".join([x.text for x in t.snippets])
                 
                 # Skapa filnamn med datum
                 now = datetime.datetime.now().strftime("%Y%m%d_%H%M")
