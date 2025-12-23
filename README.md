@@ -1,19 +1,20 @@
-# 🎈 Blank app template
+# YouTube Transkript-app
 
-A simple Streamlit app template for you to modify!
+En enkel Streamlit-app för att hämta transkript från YouTube-videor.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+## Lokal körning
 
-### How to run it on your own machine
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-1. Install the requirements
+## Deployment på Streamlit Cloud
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+1. Pusha denna mapp till ett GitHub-repo
+2. Gå till [share.streamlit.io](https://share.streamlit.io)
+3. Klicka "New app"
+4. Välj ditt repo och ange `app.py` som huvudfil
+5. Klicka "Deploy"
 
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+Appen får en publik URL som du kan dela med andra. På mobilen kan man lägga till den på hemskärmen via webbläsarens "Lägg till på hemskärmen"-funktion.

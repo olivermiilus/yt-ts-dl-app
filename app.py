@@ -31,9 +31,9 @@ if url:
                     t = YouTubeTranscriptApi.get_transcript(vid, languages=["sv", "en"])
                 except NoTranscriptFound:
                     t = YouTubeTranscriptApi.get_transcript(vid)
-                
+
                 # Skapa transkripttext
-                txt = " ".join([x.text for x in t])
+                txt = " ".join([x["text"] for x in t])
                 
                 # Skapa filnamn med datum
                 now = datetime.datetime.now().strftime("%Y%m%d_%H%M")
